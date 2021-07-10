@@ -23,12 +23,12 @@
 ## Built With
 
 Used python libraries:
- ```sh
-argparse
-requests
-time
-bs4
-ftplib
+ ```
+[argparse](https://docs.python.org/3/library/argparse.html)
+[requests](https://docs.python-requests.org/en/master/)
+[time](https://docs.python.org/3/library/time.html)
+[bs4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+[ftplib](https://docs.python.org/3/library/ftplib.html)
 ```
 
 
@@ -39,12 +39,15 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+At least [Python3.6](https://www.python.org/) or higher.
+
 Install Beautiful Soup 4:
  ```sh
-pip install bs4 
+pip install bs4
 ```
-
-
+```sh
+pip install requests
+```
 ### Installation
 
 Clone the repo
@@ -73,7 +76,7 @@ optional arguments:
 
 ## License
 
-Distributed under the GNU General Public License v3.0 License. See [LICENSE](https://github.com/zen-coder-bit/weatherApp/LICENSE.md) for more information.
+Distributed under the GNU General Public License v3.0 License. See [LICENSE](https://github.com/zen-coder-bit/weatherApp/blob/master/LICENSE) for more information.
 
 ## Authors
 
