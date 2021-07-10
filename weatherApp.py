@@ -1,9 +1,8 @@
 import argparse
-import ftplib
 import requests
 import time
 from bs4 import BeautifulSoup
-from ftplib import FTP
+from ftplib import FTP, all_errors
 
 parser = argparse.ArgumentParser()               
 parser.add_argument('-n', '--now', help='Checks for current weather temps always', action='store_true')
@@ -16,12 +15,18 @@ def requestPageCurrentTemp():
         try:
             page = requests.get('https://www.weatherzone.com.au/wa/perth/perth')
             soup = BeautifulSoup(page.text, "html.parser")
-            nowTempRaw = str(soup.find(class_='tempnow')) 
-            print(BeautifulSoup(nowTempRaw, "html.parser").get_text())
+            nowTemp = str(soup.find(class_='tempnow')) 
+            print(BeautifulSoup(nowTemp, "html.parser").get_text())
             time.sleep(5)
         except requests.ConnectionError:
             print("N/A")
             time.sleep(5)
+
+def requestPageCurrentTempBom():
+    page = requests.get('http://www.bom.gov.au/wa/observations/perth.shtml?ref=dropdown')
+    nowTemp = str(BeautifulSoup(page.text, "html.parser").findAll( headers="tPERTH-tmp tPERTH-station-perth"))
+    print(BeautifulSoup(nowTemp, "html.parser").get_text())
+    exit(0)
 
 def requestPageWeatherSummary():
         try:
@@ -56,7 +61,7 @@ def ftpService():
             #print(perthForecast.read)
         ftp.quit()
         exit(0)
-    except ftplib.all_errors:
+    except all_errors:
         print('FTP is Down')
         exit(0)
 
@@ -66,6 +71,8 @@ while True:
             requestPageCurrentTemp()
         elif args.report is True:
             ftpService()
+        elif args.bom is True:
+            requestPageCurrentTempBom()
         else:
             requestPageWeatherSummary()
     except KeyboardInterrupt:
