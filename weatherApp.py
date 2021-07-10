@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 from ftplib import FTP, all_errors
 
 parser = argparse.ArgumentParser()               
-parser.add_argument('-n', '--now', help='Checks for current weather temps always', action='store_true')
-parser.add_argument('--bom', help='Checks for current weather temps always from BOM', action='store_true')
-parser.add_argument('--report', help='Downloads Weather Report', action='store_true')
+parser.add_argument('-n', '--now', help='Checks for current weather temps repeatedly from weatherzone', action='store_true')
+parser.add_argument('--bom', help='Checks for current weather temps repeatedly from BOM', action='store_true')
+parser.add_argument('--report', help='Downloads weather report from BOM', action='store_true')
 args = parser.parse_args()
 
 def requestPageCurrentTemp():
