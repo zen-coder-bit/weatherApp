@@ -23,14 +23,12 @@
 ## Built With
 
 Used python libraries:
- ```
+
 [argparse](https://docs.python.org/3/library/argparse.html)
 [requests](https://docs.python-requests.org/en/master/)
 [time](https://docs.python.org/3/library/time.html)
 [bs4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 [ftplib](https://docs.python.org/3/library/ftplib.html)
-```
-
 
 ## Getting Started
 
