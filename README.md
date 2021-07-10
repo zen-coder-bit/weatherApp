@@ -24,26 +24,18 @@
 
 Used python libraries:
 
-[argparse](https://docs.python.org/3/library/argparse.html)
-
-[requests](https://docs.python-requests.org/en/master/)
-
-[time](https://docs.python.org/3/library/time.html)
-
-[bs4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-
-[ftplib](https://docs.python.org/3/library/ftplib.html)
+* [argparse](https://docs.python.org/3/library/argparse.html)
+* [requests](https://docs.python-requests.org/en/master/)
+* [time](https://docs.python.org/3/library/time.html)
+* [bs4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+* [ftplib](https://docs.python.org/3/library/ftplib.html)
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
 At least [Python 3.6](https://www.python.org/) or higher.
 
-Install Beautiful Soup 4:
+Install:
  ```sh
 pip install bs4
 ```
@@ -55,30 +47,28 @@ pip install requests
 Clone the repo
 
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/zen-coder-bit/weatherApp.git
 ```
 
 ## Usage
+
 Please note before using any BOM related commands.
 
-Copyright from http://www.bom.gov.au/other/copyright.shtml
+- Copyright from http://www.bom.gov.au/other/copyright.shtml
+- Service usage for FTP http://www.bom.gov.au/catalogue/anon-ftp.shtml
 
-Service usage for FTP http://www.bom.gov.au/catalogue/anon-ftp.shtml
-  
-Refer to Weatherzone conditions https://www.weatherzone.com.au/about/conditions.jsp
+- Refer to Weatherzone conditions https://www.weatherzone.com.au/about/conditions.jsp
 
 
 
 usage: ```weatherApp.py [-h] [-n] [--bom] [--report]```
 
 optional arguments:
- ``` -h, --help```  show this help message and exit.
 
- ``` -n, --now```   Checks for current weather temps repeatedly from weatherzone.
-
-``` --bom```    Checks for current weather temps repeatedly from BOM.
-
-``` --report```    Downloads weather report from BOM.
+*```-h, --help```  Show this help message and exit.
+*```-n, --now```   Checks for current weather temps repeatedly from weatherzone.
+*```--bom```       Checks for current weather temps repeatedly from BOM.
+*```--report```    Downloads weather report from BOM.
 
 
 ## License
