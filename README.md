@@ -33,7 +33,7 @@ Used python libraries:
 ## Getting Started
 ### Prerequisites
 
-At least [Python 3.6](https://www.python.org/) or higher.
+At least [Python 3.6+](https://www.python.org/).
 
 Install:
  ```sh
