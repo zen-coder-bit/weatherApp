@@ -6,22 +6,22 @@ from bs4 import BeautifulSoup
 from ftplib import FTP
 
 parser = argparse.ArgumentParser()               
-parser.add_argument('-n', '--now', help='Checks for current weather temps now', action='store_true')
+parser.add_argument('-n', '--now', help='Checks for current weather temps always', action='store_true')
+parser.add_argument('--bom', help='Checks for current weather temps always from BOM', action='store_true')
 parser.add_argument('--report', help='Downloads Weather Report', action='store_true')
 args = parser.parse_args()
 
 def requestPageCurrentTemp():
-    if args.now is True:
-        while True:
-            try:
-                page = requests.get('https://www.weatherzone.com.au/wa/perth/perth')
-                soup = BeautifulSoup(page.text, "html.parser")
-                nowTempRaw = str(soup.find(class_='tempnow')) 
-                print(BeautifulSoup(nowTempRaw, "html.parser").get_text())
-                time.sleep(5)
-            except requests.ConnectionError:
-                print("N/A")
-                time.sleep(5)
+    while True:
+        try:
+            page = requests.get('https://www.weatherzone.com.au/wa/perth/perth')
+            soup = BeautifulSoup(page.text, "html.parser")
+            nowTempRaw = str(soup.find(class_='tempnow')) 
+            print(BeautifulSoup(nowTempRaw, "html.parser").get_text())
+            time.sleep(5)
+        except requests.ConnectionError:
+            print("N/A")
+            time.sleep(5)
 
 def requestPageWeatherSummary():
         try:
