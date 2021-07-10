@@ -11,8 +11,6 @@
   </p>
 </p>
 
-![Stargazers](https://img.shields.io/github/stars/zen-coder-bit/weatherApp?style=social) ![License](https://img.shields.io/github/license/zen-coder-bit/weatherApp) 
-
 ## Table Of Contents
 
 * [Built With](#built-with)
