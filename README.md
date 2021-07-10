@@ -65,10 +65,10 @@ usage: ```weatherApp.py [-h] [-n] [--bom] [--report]```
 
 optional arguments:
 
-*```-h, --help```  Show this help message and exit.
-*```-n, --now```   Checks for current weather temps repeatedly from weatherzone.
-*```--bom```       Checks for current weather temps repeatedly from BOM.
-*```--report```    Downloads weather report from BOM.
+* ```-h, --help```  Show this help message and exit.
+* ```-n, --now```   Checks for current weather temps repeatedly from weatherzone.
+* ```--bom```       Checks for current weather temps repeatedly from BOM.
+* ```--report```    Downloads weather report from BOM.
 
 
 ## License
