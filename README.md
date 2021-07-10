@@ -1,8 +1,6 @@
-# weatherApp
-
 <br/>
 <p align="center">
-  <h3 align="center">Python CLI Weather App</h3>
+  <h2 align="center">Python CLI Weather App</h2>
 
   <p align="center">
     Basic CLI weather app that scraps weather sites such as BOM and Weather Zone for Perth forecasts.
