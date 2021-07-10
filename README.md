@@ -77,7 +77,7 @@ optional arguments:
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/zen-coder-bit/weatherApp/blob/main/LICENSE.md) for more information.
+Distributed under the GNU General Public License v3.0 License. See [LICENSE](https://github.com/zen-coder-bit/weatherApp/LICENSE.md) for more information.
 
 ## Authors
 
