@@ -52,7 +52,7 @@ git clone https://github.com/zen-coder-bit/weatherApp.git
 
 ## Usage
 
-Please note before using any BOM related commands.
+Please note before using any BOM or Weatherzone related commands.
 
 - Copyright from http://www.bom.gov.au/other/copyright.shtml
 - Service usage for FTP http://www.bom.gov.au/catalogue/anon-ftp.shtml
