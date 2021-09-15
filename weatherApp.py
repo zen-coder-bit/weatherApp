@@ -1,16 +1,18 @@
 import argparse
+import os
 import requests
 import time
 from bs4 import BeautifulSoup
-from ftplib import FTP
+from ftplib import FTP, all_errors as ftperrors
 
-parser = argparse.ArgumentParser()               
-parser.add_argument('-n', '--now',  help='Checks for current weather temps repeatedly from weatherzone', action='store_true')
-parser.add_argument('--bom',        help='Checks for current weather temps repeatedly from BOM', action='store_true')
-parser.add_argument('--report',     help='Downloads weather report from BOM', action='store_true')
+parser = argparse.ArgumentParser()    
+parser.add_argument('--weatherzone',            help='Checks for current weather temps repeatedly from Weatherzone',    action='store_true')
+parser.add_argument('--summary',        help='Prints summary report for Weatherzone web page',                           action='store_true')   
+# parser.add_argument('--bom',            help='Checks for current weather temps repeatedly from BOM',            action='store_true')
+parser.add_argument('--report',         help='Downloads todays weather report from BOM ftp',                               action='store_true')
 args = parser.parse_args()
 
-def requestPageCurrentTemp():
+def weatherzone():
     try:
         page = requests.get('https://www.weatherzone.com.au/wa/perth/perth')
         soup = BeautifulSoup(page.text, "html.parser")
@@ -21,17 +23,17 @@ def requestPageCurrentTemp():
         print("N/A")
         time.sleep(5)
 
-def requestPageCurrentTempBom():
-    try:
-        page = requests.get('http://www.bom.gov.au/wa/observations/perth.shtml?ref=dropdown')
-        nowTemp = str(BeautifulSoup(page.text, "html.parser").findAll( headers="tPERTH-tmp tPERTH-station-perth"))
-        print(BeautifulSoup(nowTemp, "html.parser").get_text())
-        time.sleep(5)
-    except requests.ConnectionError:
-        print("N/A")
-        time.sleep(5)
+# def bomRequest():
+#     try:
+#         page = requests.get('http://www.bom.gov.au/wa/observations/perth.shtml?ref=dropdown')
+#         nowTemp = str(BeautifulSoup(page.text, "html.parser").findAll( headers="tPERTH-tmp tPERTH-station-perth"))
+#         print(BeautifulSoup(nowTemp, "html.parser").get_text())
+#         time.sleep(5)
+#     except requests.ConnectionError:
+#         print("N/A")
+#         time.sleep(5)
 
-def requestPageWeatherSummary():
+def weatherzoneSummary():
     try:
         page = requests.get('https://www.weatherzone.com.au/wa/perth/perth')
         soup = BeautifulSoup(page.text, "html.parser")
@@ -53,29 +55,33 @@ def requestPageWeatherSummary():
         print("N/A")
         exit(0)
         
-def ftpService():
+def bomReport():
     try:
         ftp = FTP('ftp.bom.gov.au')
         ftp.login()
         ftp.cwd('/anon/gen/fwo/')
-        with open('IDW12300.txt', 'wb') as perthForecast:
+        with open('Perth-Weather-Report.txt', 'wb') as perthForecast:
             ftp.retrbinary('RETR IDW12300.txt', perthForecast.write)
-        ftp.quit()
+            ftp.quit()
+            print( "Report stored here \n" + os.path.dirname(os.path.abspath(perthForecast.name)) + "/{}".format(perthForecast.name))
         exit(0)
-    except:
-        print('FTP is Down')
+    except ftperrors as e:
+        print('FTP error: {}'.format(e))
         exit(0)
 
 while True:
     try:
-        if args.now is True: 
-            requestPageCurrentTemp()
+        if args.weatherzone is True: 
+            weatherzone()
+        elif args.summary is True:
+            weatherzoneSummary()
+        # elif args.bom is True:
+        #     bomRequest()
         elif args.report is True:
-            ftpService()
-        elif args.bom is True:
-            requestPageCurrentTempBom()
-        else:
-            requestPageWeatherSummary()
+            bomReport()
+        else: 
+            parser.print_help()
+            exit(0)
     except KeyboardInterrupt:
         print('\nClosing Program')
         exit(0)
