@@ -3,7 +3,7 @@
   <h2 align="center">Python CLI Weather App</h2>
 
   <p align="center">
-    Basic CLI weather app that scraps weather sites such as BOM and Weather Zone for Perth forecasts.
+    Basic CLI weather app that scraps weather sites such as BOM and WeatherZone for Perth's current weather.
     <br/>
     <br/>
   </p>
@@ -24,6 +24,7 @@
 
 Used python libraries:
 
+* [os](https://docs.python.org/3/library/os.html)
 * [argparse](https://docs.python.org/3/library/argparse.html)
 * [requests](https://docs.python-requests.org/en/master/)
 * [time](https://docs.python.org/3/library/time.html)
@@ -54,21 +55,20 @@ git clone https://github.com/zen-coder-bit/weatherApp.git
 
 Please note before using any BOM or Weatherzone related commands.
 
-- Copyright from http://www.bom.gov.au/other/copyright.shtml
-- Service usage for FTP http://www.bom.gov.au/catalogue/anon-ftp.shtml
-
-- Refer to Weatherzone conditions https://www.weatherzone.com.au/about/conditions.jsp
-
+- Copyright from: http://www.bom.gov.au/other/copyright.shtml
+- Service usage for FTP: http://www.bom.gov.au/catalogue/anon-ftp.shtml
+- Refer to Weatherzone conditions: https://www.weatherzone.com.au/about/conditions.jsp
 
 
-usage: ```weatherApp.py [-h] [-n] [--bom] [--report]```
+
+usage: ```weatherApp.py [-h] [--weatherzone] [--summary] [--report]```
 
 optional arguments:
 
-* ```-h, --help```  Show this help message and exit.
-* ```-n, --now```   Checks for current weather temps repeatedly from weatherzone.
-* ```--bom```       Checks for current weather temps repeatedly from BOM.
-* ```--report```    Downloads weather report from BOM.
+* ```-h, --help```      Show this help message and exit.
+* ```--weatherzone```   Checks for current weather temps repeatedly from Weatherzone.
+* ```--summary```       Prints summary report for Weatherzone web page.
+* ```--report```        Downloads todays weather report from BOM ftp
 
 
 ## License
